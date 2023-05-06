@@ -263,7 +263,8 @@ class RedTree(CommandTree):
     ) -> None:
         """Fallback error handler for app commands."""
         if isinstance(error, CommandNotFound):
-            await self._send_from_interaction(interaction, _("Command not found."))
+            # Disabling for now.
+            # await self._send_from_interaction(interaction, _("Command not found."))
             log.warning(
                 f"Application command {error.name} could not be resolved. "
                 "It may be from a cog that was updated or unloaded. "
