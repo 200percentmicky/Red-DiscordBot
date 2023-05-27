@@ -89,7 +89,7 @@ class Context(DPYContext):
             content = _filter(str(content))
 
         embed = discord.Embed(
-            color=super().embed_color(),
+            color=self.embed_color(),
             description=content
         )
         
