@@ -98,7 +98,8 @@ class Context(DPYContext):
             "not",
             "cannot",
             "error",
-            "failed"
+            "failed",
+            "unsuccessful"
         )
 
         for x in known_errors:
