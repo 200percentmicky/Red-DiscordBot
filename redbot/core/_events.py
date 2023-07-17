@@ -374,11 +374,11 @@ def init_events(bot, cli_flags):
             message = await bot._config.invoke_error_msg()
             if not message:
                 if ctx.author.id in bot.owner_ids:
-                    message = inline(
-                        _("Error in command '{command}'. Check your console or logs for details.")
-                    )
+                    message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please report this to the developer."
+                    message += f"```py{error.original}```"
                 else:
-                    message = inline(_("Error in command '{command}'."))
+                    message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please report this to the developer."
+                    message += f"```py{error.original}```"
             await ctx.send(message.replace("{command}", ctx.command.qualified_name))
         elif isinstance(error, commands.CommandNotFound):
             help_settings = await HelpSettings.from_context(ctx)
