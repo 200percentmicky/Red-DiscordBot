@@ -379,7 +379,7 @@ def init_events(bot, cli_flags):
                 else:
                     message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please report this to the developer."
                     message += f"```py{error.original}```"
-            await ctx.send(message.replace("{command}", ctx.command.qualified_name))
+            await ctx.channel.send(message.replace("{command}", ctx.command.qualified_name))
         elif isinstance(error, commands.CommandNotFound):
             help_settings = await HelpSettings.from_context(ctx)
             fuzzy_commands = await fuzzy_command_search(
