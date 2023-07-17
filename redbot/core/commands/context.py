@@ -99,7 +99,9 @@ class Context(DPYContext):
             "cannot",
             "error",
             "failed",
-            "unsuccessful"
+            "unsuccessful",
+            "only available",
+            "must be"
         )
 
         for x in known_errors:
@@ -107,7 +109,6 @@ class Context(DPYContext):
                 break
             if x in content:
                 embed.color = 0xFF0000
-                embed.title = ":warning: Command Error"
         
         if "embed" in kwargs or content is None:
             return await super().send(content=content, **kwargs)
