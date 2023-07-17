@@ -106,7 +106,7 @@ class Context(DPYContext):
             if content is None:
                 break
             if x in content:
-                embed.color = "FF0000"
+                embed.color = 0xFF0000
                 embed.title = ":warning: Command Error"
         
         if "embed" in kwargs or content is None:
