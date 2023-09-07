@@ -94,15 +94,15 @@ class Context(DPYContext):
         )
 
         known_errors = (
-            "unable",
-            "not",
-            "cannot",
-            "error",
-            "failed",
-            "fail",
-            "unsuccessful",
-            "only available",
-            "must be"
+            "unable ",
+            "not ",
+            "cannot ",
+            "error ",
+            "failed ",
+            "fail ",
+            "unsuccessful ",
+            "only available ",
+            "must be "
         )
 
         for x in known_errors:
