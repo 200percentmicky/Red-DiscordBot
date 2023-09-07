@@ -101,6 +101,7 @@ class Context(DPYContext):
             "failed ",
             "fail ",
             "unsuccessful ",
+            "unsuccessfully"
             "only available ",
             "must be "
         )
