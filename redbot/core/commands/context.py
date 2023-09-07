@@ -90,7 +90,7 @@ class Context(DPYContext):
 
         embed = discord.Embed(
             color=await self.embed_color(),
-            description=content,
+            description=content
         )
 
         known_errors = (
@@ -99,6 +99,7 @@ class Context(DPYContext):
             "cannot",
             "error",
             "failed",
+            "fail",
             "unsuccessful",
             "only available",
             "must be"
@@ -107,8 +108,9 @@ class Context(DPYContext):
         for x in known_errors:
             if content is None:
                 break
-            if x in content:
+            if x in content.lower():
                 embed.color = 0xFF0000
+                embed.title = ":warning: Command Error"
         
         if "embed" in kwargs or content is None:
             return await super().send(content=content, **kwargs)
