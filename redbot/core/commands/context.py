@@ -93,6 +93,10 @@ class Context(DPYContext):
             description=content
         )
 
+        embed.set_author(
+            name=f"{super().author.display_name} ({super().author})"
+        )
+
         known_errors = (
             "unable ",
             "not ",
@@ -111,7 +115,6 @@ class Context(DPYContext):
                 break
             if x in content.lower():
                 embed.color = 0xFF0000
-                embed.title = ":warning: Command Error"
         
         if "embed" in kwargs or content is None:
             return await super().send(content=content, **kwargs)
