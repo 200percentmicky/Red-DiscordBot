@@ -93,11 +93,6 @@ class Context(DPYContext):
             description=content
         )
 
-        embed.set_author(
-            name=f"{super().author}",
-            icon_url=super().author.avatar
-        )
-
         known_errors = (
             "unable ",
             "not ",
