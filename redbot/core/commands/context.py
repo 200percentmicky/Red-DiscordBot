@@ -118,9 +118,16 @@ class Context(DPYContext):
                 embed.color = 0xFF0000
         
         if "embed" in kwargs or content is None:
-            return await super().send(content=content, **kwargs)
+            if "mention_author" in kwargs:
+                return await super().reply(content=content, **kwargs)
+            else:
+                return await super().reply(content=content, mention_author=False, **kwargs)
         else:
-            return await super().send(embed=embed, **kwargs)
+            if "mention_author" in kwargs:
+                return await super().reply(embed=embed, **kwargs)
+            else:
+                return await super().reply(embed=embed, mention_author=False, **kwargs)
+
 
     async def send_help(self, command=None):
         """Send the command help message."""
