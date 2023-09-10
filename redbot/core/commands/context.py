@@ -94,7 +94,7 @@ class Context(DPYContext):
         )
 
         embed.set_author(
-            name=f"{super().author.display_name} ({super().author})",
+            name=f"{super().author}",
             icon_url=super().author.avatar
         )
 
