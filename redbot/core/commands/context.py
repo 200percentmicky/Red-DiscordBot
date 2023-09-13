@@ -88,34 +88,7 @@ class Context(DPYContext):
         if _filter and content:
             content = _filter(str(content))
 
-        embed = discord.Embed(
-            color=await self.embed_color(),
-            description=content
-        )
-
-        known_errors = (
-            "unable ",
-            "not ",
-            "cannot ",
-            "error ",
-            "failed ",
-            "fail ",
-            "unsuccessful ",
-            "unsuccessfully"
-            "only available ",
-            "must be "
-        )
-
-        for x in known_errors:
-            if content is None:
-                break
-            if x in content.lower():
-                embed.color = 0xFF0000
-        
-        if "embed" in kwargs or content is None:
-            return await super().send(content=content, **kwargs)
-        else:
-            return await super().send(embed=embed, **kwargs)
+        return await super().send(content=content, **kwargs)
 
     async def send_help(self, command=None):
         """Send the command help message."""
