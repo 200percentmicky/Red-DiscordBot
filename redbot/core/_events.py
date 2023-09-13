@@ -237,7 +237,7 @@ def init_events(bot, cli_flags):
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send_help()
         elif isinstance(error, commands.ArgParserFailure):
-            msg = _("`{user_input}` is not a valid value for `{command}`").format(
+            msg = _(":warning: `{user_input}` is not a valid value for `{command}`").format(
                 user_input=error.user_input, command=error.cmd
             )
             if error.custom_help_msg:
@@ -248,46 +248,46 @@ def init_events(bot, cli_flags):
         elif isinstance(error, commands.RangeError):
             if isinstance(error.value, int):
                 if error.minimum == 0 and error.maximum is None:
-                    message = _("Argument `{parameter_name}` must be a positive integer.")
+                    message = _(":warning: Argument `{parameter_name}` must be a positive integer.")
                 elif error.minimum is None and error.maximum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be an integer no more than {maximum}."
+                        ":warning: Argument `{parameter_name}` must be an integer no more than {maximum}."
                     )
                 elif error.minimum is not None and error.maximum is None:
                     message = _(
-                        "Argument `{parameter_name}` must be an integer no less than {minimum}."
+                        ":warning: Argument `{parameter_name}` must be an integer no less than {minimum}."
                     )
                 elif error.maximum is not None and error.minimum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be an integer between {minimum} and {maximum}."
+                        ":warning: Argument `{parameter_name}` must be an integer between {minimum} and {maximum}."
                     )
             elif isinstance(error.value, float):
                 if error.minimum == 0 and error.maximum is None:
-                    message = _("Argument `{parameter_name}` must be a positive number.")
+                    message = _(":warning: Argument `{parameter_name}` must be a positive number.")
                 elif error.minimum is None and error.maximum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be a number no more than {maximum}."
+                        ":warning: Argument `{parameter_name}` must be a number no more than {maximum}."
                     )
                 elif error.minimum is not None and error.maximum is None:
                     message = _(
-                        "Argument `{parameter_name}` must be a number no less than {maximum}."
+                        ":warning: Argument `{parameter_name}` must be a number no less than {maximum}."
                     )
                 elif error.maximum is not None and error.minimum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be a number between {minimum} and {maximum}."
+                        ":warning: Argument `{parameter_name}` must be a number between {minimum} and {maximum}."
                     )
             elif isinstance(error.value, str):
                 if error.minimum is None and error.maximum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be a string with a length of no more than {maximum}."
+                        ":warning: Argument `{parameter_name}` must be a string with a length of no more than {maximum}."
                     )
                 elif error.minimum is not None and error.maximum is None:
                     message = _(
-                        "Argument `{parameter_name}` must be a string with a length of no less than {minimum}."
+                        ":warning: Argument `{parameter_name}` must be a string with a length of no less than {minimum}."
                     )
                 elif error.maximum is not None and error.minimum is not None:
                     message = _(
-                        "Argument `{parameter_name}` must be a string with a length of between {minimum} and {maximum}."
+                        ":warning: Argument `{parameter_name}` must be a string with a length of between {minimum} and {maximum}."
                     )
             await ctx.send(
                 message.format(
@@ -301,46 +301,46 @@ def init_events(bot, cli_flags):
             if isinstance(converter, commands.Range):
                 if converter.annotation is int:
                     if converter.min == 0 and converter.max is None:
-                        message = _("Argument `{parameter_name}` must be a positive integer.")
+                        message = _(":warning: Argument `{parameter_name}` must be a positive integer.")
                     elif converter.min is None and converter.max is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be an integer no more than {maximum}."
+                            ":warning: Argument `{parameter_name}` must be an integer no more than {maximum}."
                         )
                     elif converter.min is not None and converter.max is None:
                         message = _(
-                            "Argument `{parameter_name}` must be an integer no less than {minimum}."
+                            ":warning: Argument `{parameter_name}` must be an integer no less than {minimum}."
                         )
                     elif converter.max is not None and converter.min is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be an integer between {minimum} and {maximum}."
+                            ":warning: Argument `{parameter_name}` must be an integer between {minimum} and {maximum}."
                         )
                 elif converter.annotation is float:
                     if converter.min == 0 and converter.max is None:
-                        message = _("Argument `{parameter_name}` must be a positive number.")
+                        message = _(":warning: Argument `{parameter_name}` must be a positive number.")
                     elif converter.min is None and converter.max is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be a number no more than {maximum}."
+                            ":warning: Argument `{parameter_name}` must be a number no more than {maximum}."
                         )
                     elif converter.min is not None and converter.max is None:
                         message = _(
-                            "Argument `{parameter_name}` must be a number no less than {minimum}."
+                            ":warning: Argument `{parameter_name}` must be a number no less than {minimum}."
                         )
                     elif converter.max is not None and converter.min is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be a number between {minimum} and {maximum}."
+                            ":warning: Argument `{parameter_name}` must be a number between {minimum} and {maximum}."
                         )
                 elif converter.annotation is str:
                     if error.minimum is None and error.maximum is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be a string with a length of no more than {maximum}."
+                            ":warning: Argument `{parameter_name}` must be a string with a length of no more than {maximum}."
                         )
                     elif error.minimum is not None and error.maximum is None:
                         message = _(
-                            "Argument `{parameter_name}` must be a string with a length of no less than {minimum}."
+                            ":warning: Argument `{parameter_name}` must be a string with a length of no less than {minimum}."
                         )
                     elif error.maximum is not None and error.minimum is not None:
                         message = _(
-                            "Argument `{parameter_name}` must be a string with a length of between {minimum} and {maximum}."
+                            ":warning: Argument `{parameter_name}` must be a string with a length of between {minimum} and {maximum}."
                         )
                 await ctx.send(
                     message.format(
@@ -352,10 +352,10 @@ def init_events(bot, cli_flags):
                 return
             if isinstance(error.__cause__, ValueError):
                 if converter is int:
-                    await ctx.send(_('"{argument}" is not an integer.').format(argument=argument))
+                    await ctx.send(_(':warning: "{argument}" is not an integer.').format(argument=argument))
                     return
                 if converter is float:
-                    await ctx.send(_('"{argument}" is not a number.').format(argument=argument))
+                    await ctx.send(_(':warning: "{argument}" is not a number.').format(argument=argument))
                     return
             if error.args:
                 await ctx.send(error.args[0])
@@ -403,11 +403,11 @@ def init_events(bot, cli_flags):
                 await ctx.send(await format_fuzzy_results(ctx, fuzzy_commands, embed=False))
         elif isinstance(error, commands.BotMissingPermissions):
             if bin(error.missing.value).count("1") == 1:  # Only one perm missing
-                msg = _("I require the {permission} permission to execute that command.").format(
+                msg = _(":warning: I require the {permission} permission to execute that command.").format(
                     permission=format_perms_list(error.missing)
                 )
             else:
-                msg = _("I require {permission_list} permissions to execute that command.").format(
+                msg = _(":warning: I require {permission_list} permissions to execute that command.").format(
                     permission_list=format_perms_list(error.missing)
                 )
             await ctx.send(msg)
@@ -415,11 +415,11 @@ def init_events(bot, cli_flags):
             if error.message:
                 await ctx.send(error.message)
         elif isinstance(error, commands.NoPrivateMessage):
-            await ctx.send(_("That command is not available in DMs."))
+            await ctx.send(_(":no_entry_sign: That command is not available in DMs."))
         elif isinstance(error, commands.PrivateMessageOnly):
-            await ctx.send(_("That command is only available in DMs."))
+            await ctx.send(_(":no_entry_sign: That command is only available in DMs."))
         elif isinstance(error, commands.NSFWChannelRequired):
-            await ctx.send(_("That command is only available in NSFW channels."))
+            await ctx.send(_(":no_entry_sign: That command is only available in NSFW channels."))
         elif isinstance(error, commands.CheckFailure):
             pass
         elif isinstance(error, commands.CommandOnCooldown):
@@ -431,42 +431,44 @@ def init_events(bot, cli_flags):
             relative_time = discord.utils.format_dt(
                 datetime.now(timezone.utc) + timedelta(seconds=error.retry_after), "R"
             )
-            msg = _("This command is on cooldown. Try again {relative_time}.").format(
+            msg = _(":hourglass: This command is on cooldown. Try again {relative_time}.").format(
                 relative_time=relative_time
             )
             await ctx.send(msg, delete_after=error.retry_after)
+        elif isinstance(error, commands.NotOwner):
+            await ctx.send(":no_entry_sign: Bot Owner only.")
         elif isinstance(error, commands.MaxConcurrencyReached):
             if error.per is commands.BucketType.default:
                 if error.number > 1:
                     msg = _(
-                        "Too many people using this command."
+                        ":warning: Too many people using this command."
                         " It can only be used {number} times concurrently."
                     ).format(number=error.number)
                 else:
                     msg = _(
-                        "Too many people using this command."
+                        ":warning: Too many people using this command."
                         " It can only be used once concurrently."
                     )
             elif error.per in (commands.BucketType.user, commands.BucketType.member):
                 if error.number > 1:
                     msg = _(
-                        "That command is still completing,"
+                        ":hourglass: That command is still completing,"
                         " it can only be used {number} times per {type} concurrently."
                     ).format(number=error.number, type=error.per.name)
                 else:
                     msg = _(
-                        "That command is still completing,"
+                        ":hourglass: That command is still completing,"
                         " it can only be used once per {type} concurrently."
                     ).format(type=error.per.name)
             else:
                 if error.number > 1:
                     msg = _(
-                        "Too many people using this command."
+                        ":warning: Too many people using this command."
                         " It can only be used {number} times per {type} concurrently."
                     ).format(number=error.number, type=error.per.name)
                 else:
                     msg = _(
-                        "Too many people using this command."
+                        ":warning: Too many people using this command."
                         " It can only be used once per {type} concurrently."
                     ).format(type=error.per.name)
             await ctx.send(msg)
