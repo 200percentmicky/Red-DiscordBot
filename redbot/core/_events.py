@@ -382,10 +382,10 @@ def init_events(bot, cli_flags):
             if not message:
                 if ctx.author.id in bot.owner_ids:
                     message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please run `[p]traceback` or check the console or logs for more details."
-                    message += f"```py\n{error.original}```"
+                    message += f"```py\n{traceback.format_exception(type(error.original), error.original, error.original.__traceback__)}```"
                 else:
                     message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please report this to the developer."
-                    message += f"```py\n{error.original}```"
+                    message += f"```py\n{traceback.format_exception(type(error.original), error.original, error.original.__traceback__)}```"
             await ctx.channel.send(message.replace("{command}", ctx.command.qualified_name))
         elif isinstance(error, commands.CommandNotFound):
             help_settings = await HelpSettings.from_context(ctx)
