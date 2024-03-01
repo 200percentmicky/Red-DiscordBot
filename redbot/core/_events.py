@@ -380,13 +380,13 @@ def init_events(bot, cli_flags):
 
             message = await bot._config.invoke_error_msg()
             if not message:
-                ftb = traceback.format_exception(type(error.original), error.original, error.original.__traceback__)
+                ftb = "".join(traceback.format_exception(type(error.original), error.original, error.original.__traceback__))
                 if ctx.author.id in bot.owner_ids:
                     message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please run `[p]traceback` or check the console or logs for more details."
-                    message += f"```py\n{"".join(ftb)}```"
+                    message += f"```py\n{ftb}```"
                 else:
                     message = ":anger: **Bruh Moment** - `{command}`\nSomething bad happened. Please report this to the developer."
-                    message += f"```py\n{"".join(ftb)}```"
+                    message += f"```py\n{ftb}```"
             await ctx.channel.send(message.replace("{command}", ctx.command.qualified_name))
         elif isinstance(error, commands.CommandNotFound):
             help_settings = await HelpSettings.from_context(ctx)
