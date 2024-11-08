@@ -60,6 +60,9 @@ class Context(DPYContext):
         This acts the same as `discord.ext.commands.Context.send`, with
         one added keyword argument as detailed below in *Other Parameters*.
 
+        This is modified to send the message in an embed by default. Use
+        `send_standard()` to send a normal message.
+
         Parameters
         ----------
         content : str
@@ -97,6 +100,44 @@ class Context(DPYContext):
             return await super().send(content=content, **kwargs)
         else:
             return await super().send(embed=embed, **kwargs)
+
+    async def send_standard(self, content=None, **kwargs):
+        """Sends a message to the destination with the content given.
+
+        This acts the same as `discord.ext.commands.Context.send`, with
+        one added keyword argument as detailed below in *Other Parameters*.
+
+        This is the unmodified `send()` function.
+
+        Parameters
+        ----------
+        content : str
+            The content of the message to send.
+
+        Other Parameters
+        ----------------
+        filter : callable (`str`) -> `str`, optional
+            A function which is used to filter the ``content`` before
+            it is sent.
+            This must take a single `str` as an argument, and return
+            the processed `str`. When `None` is passed, ``content`` won't be touched.
+            Defaults to `None`.
+        **kwargs
+            See `discord.ext.commands.Context.send`.
+
+        Returns
+        -------
+        discord.Message
+            The message that was sent.
+
+        """
+
+        _filter = kwargs.pop("filter", None)
+
+        if _filter and content:
+            content = _filter(str(content))
+
+        return await super().send(content=content, **kwargs)
 
     async def send_help(self, command=None):
         """Send the command help message."""
