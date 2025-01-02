@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from .commands import Command
     from ..bot import Red
 
-TICK = "<:pOk:515045693425975298>"
+TICK = "<:wave_sure:1320196017940856832>"
 
 __all__ = ["Context", "GuildContext", "DMContext"]
 
